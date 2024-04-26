@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Labb3APIv2", "Labb3APIv2.csproj", "{39E03CA5-2C93-4679-8A65-8E4DF5D68194}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersoModels", "..\PersoModels\PersoModels.csproj", "{ACB063F6-9CCE-4E96-A234-724285F71A51}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{39E03CA5-2C93-4679-8A65-8E4DF5D68194}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39E03CA5-2C93-4679-8A65-8E4DF5D68194}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39E03CA5-2C93-4679-8A65-8E4DF5D68194}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39E03CA5-2C93-4679-8A65-8E4DF5D68194}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACB063F6-9CCE-4E96-A234-724285F71A51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACB063F6-9CCE-4E96-A234-724285F71A51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACB063F6-9CCE-4E96-A234-724285F71A51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACB063F6-9CCE-4E96-A234-724285F71A51}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {17961585-120C-46AF-8FD4-8333378D0F4E}
+	EndGlobalSection
+EndGlobal
