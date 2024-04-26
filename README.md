@@ -9,7 +9,7 @@ https://localhost:7180/api/Person
 GET /api/Person
 Returns a list of peole and its interest and weblinks.
 ***
-- Response
+-Response
  - PersonID
  - FirstName
  - LastName
@@ -21,7 +21,7 @@ Returns a list of peole and its interest and weblinks.
   - Link
     - LinkID
     - LinkAddress
-    ***
+***
 * Example
 
 {
