@@ -18,7 +18,7 @@ Put/ api/ Person/ {id}
 ***
 1. Hämta alla personer [GET /api/Person]
 
-*Response*
+**Response**
  - PersonID
  - FirstName
  - LastName
@@ -31,7 +31,7 @@ Put/ api/ Person/ {id}
     - LinkID
     - LinkAddress
 
-*Example*
+**Example**
 
 [
   {
@@ -64,7 +64,7 @@ You can get the same response as above.
 
 Put/api/Person( {id}, this takes personId as parameter.
 
-*Request*
+**Request**
 {
   "personId": 1,
 
@@ -76,7 +76,7 @@ Put/api/Person( {id}, this takes personId as parameter.
   ]
 }
 
-*Response*
+**Response**
 
 {
   "personId": 1,
