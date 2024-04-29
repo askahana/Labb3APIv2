@@ -20,7 +20,8 @@ namespace Labb3APIv2
             builder.Services.AddSwaggerGen();
 
             // ADDED THIS
-            builder.Services.AddScoped<IHobbyRepository<Person>, PersonRepository>();
+            // builder.Services.AddScoped<IHobbyRepository<Person>, PersonRepository>();
+            builder.Services.AddScoped<IPerson, PersonRepository2>();
             builder.Services.AddScoped<IHobbyRepository<Interest>, InterestRepository>();
             builder.Services.AddScoped<IHobbyRepository<Link>, LinkRepository>();
 

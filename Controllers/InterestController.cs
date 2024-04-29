@@ -48,6 +48,24 @@ namespace Labb3APIv2.Controllers
                     "Error to retieve data from database.");
             }
         }
+        [HttpGet("person/{id:int}")]
+        public async Task<ActionResult<Interest>> GetSpecificPersons(int personId)
+        {
+            try
+            {
+                var result = await _repo.GetSpecificPersonInfo(personId);
+                if (result == null)
+                {
+                    return NotFound();
+                }
+                return Ok(result);
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                     "Error to retrive data from database");
+            }
+        }
         [HttpGet("{name}")]
         public async Task<ActionResult<Interest>> Search(string name)
         {

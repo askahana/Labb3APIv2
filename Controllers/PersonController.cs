@@ -11,8 +11,14 @@ namespace Labb3APIv2.Controllers
     [ApiController]
     public class PersonController : ControllerBase
     {
-        private IHobbyRepository<Person> _repo;
-        public PersonController(IHobbyRepository<Person> repo)
+        //private IHobbyRepository<Person> _repo;
+        //public PersonController(IHobbyRepository<Person> repo)
+        //{
+        //    _repo = repo;
+        //}
+
+        private IPerson _repo;
+        public PersonController(IPerson repo)
         {
             _repo = repo;
         }
@@ -30,13 +36,32 @@ namespace Labb3APIv2.Controllers
                     "Error to retrieve data from database");
             }
         }
+
+
+      
+        [HttpGet("limited/{num}")]
+
+        public async Task<IActionResult> GetLimitedNum(int num)
+        {
+            try
+            {
+                return Ok(await _repo.GetLimitedNum(num));
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    "Error to retrieve data from database");
+            }
+        }
+
+
         [HttpGet("{id:int}")]
 
         public async Task<ActionResult<Person>> GetOnePerson(int id)
         {
             try
             {
-                var result = await _repo.GetSingel(id);
+                var result = await _repo.GetSingelPerson(id);
                 if(result == null)
                 {
                     return NotFound();
@@ -54,7 +79,7 @@ namespace Labb3APIv2.Controllers
         {
             try
             {
-                var result = await _repo.Search(name);
+                var result = await _repo.Serach(name);
                 if(result == null)
                 {
                     return NotFound();
@@ -74,7 +99,7 @@ namespace Labb3APIv2.Controllers
         {
             try
             {
-                var personToDelete = await _repo.GetSingel(id);
+                var personToDelete = await _repo.GetSingelPerson(id);
                 if(personToDelete == null)
                 {
                     return NotFound($"Person with Id {id} wan not found to delete.");
@@ -109,17 +134,40 @@ namespace Labb3APIv2.Controllers
             }
         }
 
-        [HttpPut("{id:int}")]
+
+      
+
+        [HttpPut("addInterest/{id:int}")]
+        public async Task<ActionResult<Person>> UpdatePersonInterest(int id, Interest interest)
+        {
+            try
+            {
+                var personToUpdate = await _repo.GetSingelPerson(id);
+            
+                if(personToUpdate == null)
+                {
+                    return NotFound($"ID {id} not founded to update.");
+                }
+                return await _repo.AddInterestToPerson(id, interest);
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                  "Error to update data into Database.");
+            }
+        }
+
+        [HttpPut("person/{id:int}")]
         public async Task<ActionResult<Person>> UpdatePerson(int id, Person person)
         {
             try
             {
-                if(id != person.PersonId)
+                if (id != person.PersonId)
                 {
                     return BadRequest("ID doesnt match.");
                 }
-                var personToUpdate = await _repo.GetSingel(id);
-                if(personToUpdate == null)
+                var personToUpdate = await _repo.GetSingelPerson(id);
+                if (personToUpdate == null)
                 {
                     return NotFound($"ID {id} not founded to update.");
                 }
@@ -131,6 +179,7 @@ namespace Labb3APIv2.Controllers
                   "Error to update data into Database.");
             }
         }
+
 
 
 

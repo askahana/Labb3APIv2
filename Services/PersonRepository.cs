@@ -1,10 +1,11 @@
 ﻿using Labb3APIv2.Data;
+using Microsoft.AspNetCore.Mvc.TagHelpers;
 using Microsoft.EntityFrameworkCore;
 using PersoModels;
 
 namespace Labb3APIv2.Services
 {
-    public class PersonRepository : IHobbyRepository<Person>
+    public class PersonRepository 
     {
         private PersonDbConxtext _db;
 
@@ -47,7 +48,7 @@ namespace Labb3APIv2.Services
             if (result != null)
             {
                 result.Tel = entity.Tel;
-                if (entity.Interest != null && entity.Interest.Any())
+                if (entity.Interest != null)
                 {
                     // 新しい興味を追加
                     foreach (var hobby in entity.Interest)
@@ -55,8 +56,24 @@ namespace Labb3APIv2.Services
                         var existingInterest = await _db.Interests.FindAsync(hobby.InterestId);
                         if (existingInterest != null)
                         {
+                            if(existingInterest.Link != null)
+                            {
+                                foreach(var link in hobby.Link)
+                                {
+                                    var existingLink = await _db.Links.FindAsync(link.LinkId);
+                                    if (existingLink != null)
+                                    {
+                                        existingLink = new Link { LinkAddress = link.LinkAddress };
+                                        existingInterest.Link.Add(existingLink); // 新しいリンクを追加
+                                        //existingLink.LinkAddress = link.LinkAddress; // 既存のリンクを更新
+                                    }
+                                    else
+                                    {
+                                        
+                                    }
+                                }
+                            }
                             result.Interest.Add(existingInterest);
-                            
                         }
                     }
                 }
@@ -78,6 +95,20 @@ namespace Labb3APIv2.Services
             }
             return await query.ToListAsync();
         }
+        public async Task<IEnumerable<Person>> GetSpecificPersonInfo(int personalId)
+        {
 
+            var person = await _db.Persons.Include(p => p.Interest).ThenInclude(p => p.Link)
+                .FirstOrDefaultAsync(p => p.PersonId == personalId);
+            if (person != null)
+            {
+                return null;
+            }
+            else
+            {
+                return null; // または適切な処理を行います。
+            }
+
+        }
     }
 }

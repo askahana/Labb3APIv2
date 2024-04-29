@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 using PersoModels;
+using System;
 
 namespace Labb3APIv2.Services
 {
@@ -80,6 +81,21 @@ namespace Labb3APIv2.Services
 
             }
             return await query.ToListAsync();
+        }
+
+        public async Task<IEnumerable<Interest>> GetSpecificPersonInfo(int personalId)
+        {
+            var person = await _db.Persons.Include(p => p.Interest).ThenInclude(p => p.Link)
+                .FirstOrDefaultAsync(p => p.PersonId == personalId);
+            if (person != null)
+            {
+                return person.Interest;
+            }
+            else
+            {
+                return null; // または適切な処理を行います。
+            }
+
         }
     }
 }

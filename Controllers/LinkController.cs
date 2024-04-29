@@ -28,7 +28,7 @@ namespace Labb3APIv2.Controllers
             }
         }
 
-        [HttpGet("{id:int}")]
+        [HttpGet("link/{id:int}")]
 
         public async Task<ActionResult<Link>> GetOneLink(int id)
         {
@@ -46,6 +46,25 @@ namespace Labb3APIv2.Controllers
             {
                 return StatusCode(StatusCodes.Status500InternalServerError,
                     "Error to retirbe data from database.");
+            }
+        }
+
+        [HttpGet("person/{id:int}")]
+        public async Task<ActionResult<Link>> GetSpecificPersons(int personId)
+        {
+            try
+            {
+                var result = await _repo.GetSpecificPersonInfo(personId);
+                if(result == null)
+                {
+                    return NotFound();
+                }
+                return Ok(result);
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                     "Error to retrive data from database");
             }
         }
         

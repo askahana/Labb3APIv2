@@ -61,7 +61,22 @@ namespace Labb3APIv2.Services
             }
             return await query.ToListAsync();
         }
+        public async Task<IEnumerable<Link>> GetSpecificPersonInfo(int personalId)
+        {
+          
+            var person = await _db.Persons.Include(p => p.Interest).ThenInclude(p =>p.Link)
+                .FirstOrDefaultAsync(p => p.PersonId == personalId);
+            if (person != null)
+            {
+                var links = person.Interest.SelectMany(i => i.Link);
+                return links;
+            }
+            else
+            {
+                return null; // または適切な処理を行います。
+            }
 
-      
+        }
+
     }
 }

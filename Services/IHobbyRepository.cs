@@ -8,5 +8,7 @@
         Task<T> Ddelete(int id);
         Task<T> Update(T entity);
         Task<IEnumerable<T>> Search(string name);
+
+        Task<IEnumerable<T>> GetSpecificPersonInfo(int personalId);
     }
 }
