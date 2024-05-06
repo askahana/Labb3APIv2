@@ -56,9 +56,11 @@ Put/ api/ Person/ {id}
 
 2. Hämta alla intressen som är kopplade till en specifik person / 3. Hämta alla länkar som är kopplade till en specifik person
 
+
 GET /api/Person/{id} , this takes personId as parameter.
 
 You can get the same response as above.
+
 
 4. Koppla en person till ett nytt intresse
 
