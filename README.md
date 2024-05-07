@@ -31,40 +31,19 @@ Put/ api/ Person/ {id}
     - LinkID
     - LinkAddress
 
-**Example**
 
-[
-  {
-    "personId": 1,
-    "firstName": "Bob",
-    "lastName": "Dylan",
-    "tel": "234455",
-    "interest": [
-      {
-        "interestId": 1,
-        "title": "Music",
-        "description": "Playing guitar",
-        "link": [
-          {
-            "linkId": 1,
-            "linkAddress": "https://www.bobdylan.com/"
-          }
-        ]
-      }
-    ]
-  },
 
 2. Hämta alla intressen som är kopplade till en specifik person / 3. Hämta alla länkar som är kopplade till en specifik person
 
 
-GET /api/Person/{id} , this takes personId as parameter.
+[GET /api/Person/{id}] , this takes personId as parameter.
 
 You can get the same response as above.
 
 
 4. Koppla en person till ett nytt intresse
 
-Put/api/Person( {id}, this takes personId as parameter.
+[Put/api/Person/{id}], this takes personId as parameter.
 
 **Request**
 {
