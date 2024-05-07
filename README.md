@@ -41,7 +41,7 @@ Put/ api/ Person/ {id}
 You can get the same response as above.
 
 
-4. Koppla en person till ett nytt intresse
+4. Koppla en person till ett nytt intresse  
 
 [Put/api/Person/{id}], this takes personId as parameter.
 
@@ -60,15 +60,15 @@ You can get the same response as above.
 **Response**
 
 {
-  "personId": 1,
-  "firstName": "Bob",
-  "lastName": "Dylan",
-  "tel": "234455",
-  "interest": [
+  "personId": 1,  
+  "firstName": "Bob",  
+  "lastName": "Dylan",  
+  "tel": "234455",  
+  "interest": [  
     {
-      "interestId": 1,
-      "title": "Music",
-      "description": "Playing guitar",
+      "interestId": 1,  
+      "title": "Music",  
+      "description": "Playing guitar",  
       "link": [
         {
           "linkId": 1,
