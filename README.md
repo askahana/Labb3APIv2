@@ -85,4 +85,5 @@ You can get the same response as above.
   ]
 }
 
-5. Lägga in nya länkar för en specifik person och ett specifikt intresse
+5. Lägga in nya länkar för en specifik person och ett specifikt intresse  
+[PUT /api/Person/{id}]
