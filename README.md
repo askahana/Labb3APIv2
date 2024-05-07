@@ -57,33 +57,7 @@ You can get the same response as above.
   ]
 }
 
-**Response**
 
-{
-  "personId": 1,  
-  "firstName": "Bob",  
-  "lastName": "Dylan",  
-  "tel": "234455",  
-  "interest": [  
-    {
-      "interestId": 1,  
-      "title": "Music",  
-      "description": "Playing guitar",  
-      "link": [
-        {
-          "linkId": 1,
-          "linkAddress": "https://www.bobdylan.com/"
-        }
-      ]
-    },
-    {
-      "interestId": 2,
-      "title": "Art",
-      "description": "Painting",
-      "link": null
-    }
-  ]
-}
 
 5. Lägga in nya länkar för en specifik person och ett specifikt intresse  
 [PUT /api/Person/{id}]
