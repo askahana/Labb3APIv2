@@ -38,7 +38,7 @@ Put/ api/ Person/ {id}
 
 [GET /api/Person/{id}] , this takes personId as parameter.
 
-You can get the same response as above.
+You can get the same response as above.  
 
 
 4. Koppla en person till ett nytt intresse  
